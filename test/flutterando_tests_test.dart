@@ -2,6 +2,10 @@ import 'package:flutterando_tests/flutterando_tests.dart';
 import 'package:test/test.dart';
 
 void main() {
+  setUp(() => null);
+  tearDown(() => null);
+  setUpAll(() => null);
+  tearDownAll(() => null);
   test('Should calculate IMC', () {
     // arrange
     final height = 1.78;
@@ -17,23 +21,27 @@ void main() {
   });
 
   group(
-      'Param\'s Exception |',
-      () => {
-            test('ERROR: height must be higher than 0', () {
-              expect(
-                () => calculateImc(height: 0, weight: 75),
-                throwsA(
-                  isA<Exception>(),
-                ),
-              );
-            }),
-            test('ERROR: weight must be weight than 0', () {
-              expect(
-                () => calculateImc(height: 1.78, weight: 0),
-                throwsA(
-                  isA<Exception>(),
-                ),
-              );
-            }),
-          });
+    'Param\'s Exception |',
+    () => {
+      test('ERROR: height must be higher than 0', () {
+        expect(
+          () => calculateImc(height: 0, weight: 75),
+          throwsA(
+            isA<Exception>(),
+          ),
+        );
+      }),
+      test(
+        'ERROR: weight must be weight than 0',
+        () {
+          expect(
+            () => calculateImc(height: 1.78, weight: 0),
+            throwsA(
+              isA<Exception>(),
+            ),
+          );
+        },
+      ),
+    },
+  );
 }

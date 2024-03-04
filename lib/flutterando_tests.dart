@@ -9,7 +9,3 @@ double calculateImc({required double height, required double weight}) {
   }
   return weight / pow(height, 2);
 }
-
-void main() {
-  final result = calculateImc(height: 1.78, weight: 75);
-}
