@@ -3,25 +3,37 @@ import 'package:test/test.dart';
 
 void main() {
   test('Should calculate IMC', () {
-    final result = calculateImc(height: 1.78, weight: 75);
-    expect(result, 23.671253629592222);
+    // arrange
+    final height = 1.78;
+    final weight = 75.0;
+    // act
+    final result = calculateImc(height: height, weight: weight);
+    // assert
+    expect(result, equals(23.671253629592222));
+    expect(result, isA<double>());
+    expect(result, greaterThan(20));
+    expect(result, isPositive);
+    expect(result.toString(), matches(RegExp(r'\d')));
   });
 
-  test('ERROR: height must be higher than 0', () {
-    expect(
-      () => calculateImc(height: 0, weight: 75),
-      throwsA(
-        isA<Exception>(),
-      ),
-    );
-  });
-
-  test('ERROR: weight must be weight than 0', () {
-    expect(
-      () => calculateImc(height: 1.78, weight: 0),
-      throwsA(
-        isA<Exception>(),
-      ),
-    );
-  });
+  group(
+      'Param\'s Exception |',
+      () => {
+            test('ERROR: height must be higher than 0', () {
+              expect(
+                () => calculateImc(height: 0, weight: 75),
+                throwsA(
+                  isA<Exception>(),
+                ),
+              );
+            }),
+            test('ERROR: weight must be weight than 0', () {
+              expect(
+                () => calculateImc(height: 1.78, weight: 0),
+                throwsA(
+                  isA<Exception>(),
+                ),
+              );
+            }),
+          });
 }
