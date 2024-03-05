@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutterando_tests/api_consume.dart';
+import 'package:flutterando_tests/api_consume_package.dart';
 import 'package:flutterando_tests/models/product.dart';
 import 'package:test/test.dart';
 import 'package:uno/uno.dart';
