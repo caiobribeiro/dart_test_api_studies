@@ -9,8 +9,9 @@ class UnoMock extends Mock implements Uno {}
 class ResponseMock extends Mock implements Response {}
 
 void main() {
+  final uno = UnoMock();
+  tearDown(() => reset(uno));
   test('Should return a list of products', () async {
-    final uno = UnoMock();
     final response = ResponseMock();
     when(() => response.data).thenReturn(productListJson);
     when(() => uno.get(any())).thenAnswer((invocation) async => response);
@@ -25,7 +26,6 @@ void main() {
   });
 
   test('Should return a empty list', () async {
-    final uno = UnoMock();
     final service = ApiService(uno);
     when(() => uno.get(any())).thenThrow(UnoError('error'));
 
